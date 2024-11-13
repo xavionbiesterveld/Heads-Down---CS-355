@@ -8,7 +8,7 @@ startButton.addEventListener('click', () => {
     // Add your game logic here
 });
 
-
+//Start of nate code
 document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('start-button');
     const wordDisplay = document.getElementById('word-display');
