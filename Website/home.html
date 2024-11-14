@@ -10,7 +10,29 @@
     <header>
         <h1>Heads Up!</h1>
         <p>The Ultimate Guessing Game</p>
+        <button class="btnLogin-popup">Login</button>
+        <button class="btnRegister-popup">Register</button>
     </header>
+
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" class="register-link">Register Here</a></p>
+                </div>
+            </form>
+        </div>
+
     <main>
         <section id="game-instructions">
             <h2>How to Play</h2>
@@ -24,6 +46,9 @@
             <button id="start-button">Start Game</button>
         </section>
     </main>
+
+    </div>
+
     <footer>
         <p>&copy; 2024 Heads Up!</p>
     </footer>
