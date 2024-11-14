@@ -40,21 +40,6 @@ button {
     margin: 20px auto;
 }
 
-
-
-
-
-//Start of Nate Code.
-
-//style.css
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f8ff;
-    text-align: center;
-}
-
 header {
     background-color: #0073e6;
     color: white;
@@ -75,7 +60,8 @@ main {
 }
 
 #game-area {
-    margin: 20px 0;
+    width: 80%;
+    margin: 20px auto;
 }
 
 #word-display {
