@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heads Up Homepage</title>
-    <link rel="stylesheet" href="headsdown.css">
-</head>
-<body>
-    <h1>Heads Up</h1>
-    <button id="startButton">Start Game</button>
-    <div id="gameContainer" style="display: none;">
-        
-    </div>
-</body>
-</html>
-
-
-//Start of Nate code
-//index.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heads Up Game</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="headsdown.css">
 </head>
 <body>
     <header>
         <h1>Heads Up!</h1>
         <p>The Ultimate Guessing Game</p>
+        <button class="btnLogin-popup">Login</button>
+        <button class="btnRegister-popup">Register</button>
     </header>
+
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" class="register-link">Register Here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <main>
         <section id="game-instructions">
             <h2>How to Play</h2>
@@ -44,6 +47,9 @@
             <button id="start-button">Start Game</button>
         </section>
     </main>
+
+    
+
     <footer>
         <p>&copy; 2024 Heads Up!</p>
     </footer>
