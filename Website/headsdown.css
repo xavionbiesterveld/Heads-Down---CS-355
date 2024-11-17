@@ -103,18 +103,72 @@ footer {
 .wrapper {
     position: relative;
     width: 400px;
-    height: 440px;
+    height: 450px;
     background: transparent;
     border: 2px solid white;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .5s ease, height .2s ease;
+
+}
+
+.wrapper.active {
+    height: 475px;
+}
+
+.wrapper.active-popup {
+    transform: scale(1);
 }
 
 .wrapper .form-box{
     width: 100%;
     padding: 40px;
+}
+
+.wrapper .form-box.login{
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login{
+    transition: none;
+    transform: translateX(-400px);
+    
+}
+
+.wrapper .form-box.register{
+    position: absolute;
+    width: 80%;
+    transition: none;
+    transform: translateX(400px);
+}
+
+.wrapper.active .form-box.register{
+    transition: transform .18s ease;
+    transform: translateX(0px);
+    
+}
+
+.wrapper .close-window{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.wrapper .close-window:hover {
+    opacity: 0.7;
 }
 
 .form-box h2{
@@ -132,7 +186,6 @@ footer {
 .input-box input:focus~label,
 .input-box input:valid~label {
     color: transparent;
-
 }
 
 .input-box label{
