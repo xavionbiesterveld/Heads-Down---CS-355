@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heads Down Homepage</title>
+    <title>Heads Down Score</title>
     <link rel="stylesheet" href="headsdown.css">
     <style>
         body {
@@ -63,6 +63,13 @@
             justify-content: center;
             margin-bottom: 20px;
         }
+
+        h2 {
+            padding: 10px;
+            font-size: larger;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
         
         button {
             background-color: #0073e6;
@@ -79,57 +86,21 @@
             background-color: #005bb5;
         }
 
-        /* Popup container */
         .popup {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
-        
-        /* The actual popup (appears on top) */
-        .popup .popuptext {
-            visibility: hidden;
-            width: 40vw;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 8px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
+            display: none;
+            position: fixed;
+            top: 50%;
             left: 50%;
-            margin-left: -80px;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index:   
+         9999;
         }
         
-        /* Popup arrow */
-        .popup .popuptext::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #555 transparent transparent transparent;
-        }
-        
-        /* Toggle this class when clicking on the popup container (hide and show the popup) */
-        .popup .show {
-            visibility: visible;
-            -webkit-animation: fadeIn 1s;
-            animation: fadeIn 1s
-        }
-        
-        /* Add animation (fade in the popup) */
-        @-webkit-keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-        
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity:1 ;}
+        .popup:target {
+            display: block;
         }
         
         footer {
@@ -148,33 +119,19 @@
         <h1>Heads Down</h1>
         <p>The Ultimate Guessing Game</p>
     </header>
+
     <main>
-        <section id="game-instructions">
-            <h2>How to Play</h2>
-            <p>
-                Hold the phone or card up to your forehead. Your teammates will give you clues to guess the word before time runs out!
-                <br>
-                Rules
-                <ul>
-                    <li>No Direct Answers</li>
-                    <li>No Foreign Language</li>
-                    <li>The game ends when timer runs out</li>
-                </ul>
-                The player with the highest score at the end of the game wins.
-                <br>
-                HAVE FUN!!
-            </p>
+        <section id="game-area">
+            <h2>Your score is</h2>
+            <div id="score-display">
+                
+            </div>
+            <button id="playGame" onclick="window.location.href='play_game.html'">Restart</button>
+            <button id="settingPage" onclick="window.location.href='setting_page.html'">Change setting</button>
+            <button id="leaderBoard" onclick="window.location.href='setting_page.html'">View Leader Board</button>
         </section>
-        <button id="leaderBoard">View Leader Board</button>
-        <div class="popup" onclick="showLeaderBoard()">
-            <span class="popuptext" id="myPopup">
-                <h2>Leader Board</h2>
-                <p>You can customize this content as needed.</p>
-            <button id="close-popup">Close</button>
-            </span>
-        </div>
-        <button id="settingPage" onclick="window.location.href='setting_page.html'">Next Page</button>
     </main>
+    
     <footer>
         <p>&copy; 2024 Heads Down</p>
     </footer>
