@@ -19,7 +19,7 @@
         </span>
         <div class="form-box login">
             <h2>Login</h2>
-            <form action="#">
+            <form action="login.php">
                 <div class="input-box">
                     <input type="username" required>
                     <label>Username</label>
@@ -37,7 +37,7 @@
 
         <div class="form-box register">
             <h2>Register</h2>
-            <form action="#">
+            <form action="signup.php">
                 <div class="input-box">
                     <input type="first name" required>
                     <label>First Name</label>
