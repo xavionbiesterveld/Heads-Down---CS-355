@@ -1,3 +1,8 @@
+<?php
+require_once 'LoginPHP/config_session.php';
+require_once 'LoginPHP/signup_view.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,13 +24,13 @@
         </span>
         <div class="form-box login">
             <h2>Login</h2>
-            <form action="login.php">
+            <form action="LoginPHP/login.php" method='post'>
                 <div class="input-box">
-                    <input type="username" required>
+                    <input type="username" name='username' required>
                     <label>Username</label>
                 </div>
                 <div class="input-box">
-                    <input type="password" required>
+                    <input type="password" name='password' required>
                     <label>Password</label>
                 </div>
                 <button type="submit">Login</button>
@@ -37,30 +42,36 @@
 
         <div class="form-box register">
             <h2>Register</h2>
-            <form action="signup.php">
+            <form action="LoginPHP/signup.php" method='post'>
                 <div class="input-box">
-                    <input type="first name" required>
+                    <input type="firstname" name='firstname' required> 
                     <label>First Name</label>
                 </div>
                 <div class="input-box">
-                    <input type="last name" required>
+                    <input type="lastname" name='lastname' required>
                     <label>Last Name</label>
                 </div>
                 <div class="input-box">
-                    <input type="username" required>
+                    <input type="username" name='username' required>
                     <label>Username</label>
                 </div>
                 <div class="input-box">
-                    <input type="password" required>
+                    <input type="password" name='password' required>
                     <label>Password</label>
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit">Register</button>
                 <div class="login-register">
                     <p>Have an account? <a href="#" class="login-link">Login Here</a></p>
                 </div>
             </form>
+
+           
         </div>
     </div>
+
+<?php
+    check_signup_errors();
+?>
 
     <main>
         <section id="game-instructions">
