@@ -1,4 +1,4 @@
-CREATE DATABASE IF EXISTS heads_down;
+CREATE DATABASE IF NOT EXISTS heads_down;
 
 use heads_down
 
