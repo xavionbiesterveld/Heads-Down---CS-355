@@ -1,6 +1,7 @@
 <?php
 require_once 'LoginPHP/config_session.php';
 require_once 'LoginPHP/signup_view.php';
+require_once 'LoginPHP/login_view.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +17,16 @@ require_once 'LoginPHP/signup_view.php';
         <h1>Heads Up!</h1>
         <p>The Ultimate Guessing Game</p>
         <button class="btnLogin-popup">Login</button>
+
+        <?php
+            if (isset($_SESSION["user_id"])){ ?>
+
+                <form action="Loginphp/logout.php" method="post">
+                    <input type="hidden" name="some_data" value="value">
+                    <button type="submit">Logout</button>
+                </form>
+            
+        <?php } ?>
     </header>
 
     <div class="wrapper">
@@ -38,6 +49,9 @@ require_once 'LoginPHP/signup_view.php';
                     <p>Don't have an account? <a href="#" class="register-link">Register Here</a></p>
                 </div>
             </form>
+            <?php
+                check_login_errors()
+            ?>
         </div>
 
         <div class="form-box register">

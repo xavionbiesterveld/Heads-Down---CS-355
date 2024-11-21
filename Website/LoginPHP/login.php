@@ -3,6 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    error_log("This is a log message");
 
     try {
         require_once 'dbh.php';
@@ -17,28 +18,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $result = get_user($pdo, $username);
 
+        
+
+        $result1 = does_username_exist($result);
+        error_log("Username existence check: " . ($result1 ? 'true' : 'false'));
+
+        $result2 = is_password_correct($password, $result);
+        error_log("Password existence check: " . ($result2 ? 'true' : 'false'));
+
+
+
+
         if (!does_username_exist($result)) {
             $errors["login_incorrect"] = "Incorrect login info";
         }
-        else if (!is_password_correct($password, $hashpass)){
+       
+        if (!is_password_correct($password, $result)){
             $errors["login_incorrect"] = "Incorrect login info";
         }
+       
+
+        require_once 'config_session.php';
+
+        if ($errors) {
+            $_SESSION['errors_signup'] = $errors;
+            header("Location: ../home.php");
+            die();
+        }
+    
+        $newSessionId = session_create_id();
+        $sessionId = $newSessionId . "_" . $result['id'];
+        session_id($sessionId);
+    
+        $_SESSION["user_id"] = $result["user_id"];
+        $_SESSION["username"] = htmlspecialchars($result["username"]);
+    
+        $_SESSION['last_regeneration'] = time();
+    
+        header('Location: ../home.php?login=success');
+    
+        $pdo = null;
+        $stmt = null;
+    
+        die();
     }
     catch (PDOException $e) {
         die('Query failed: '. $e->getMessage());
     }
-
-    require_once 'config_session.php';
-
-    if ($errors) {
-        $_SESSION['errors_signup'] = $errors;
-        header("Location: ../home.php");
-        die();
-    }
-
-    $newSessionId = session_create_id();
-    $sessionId = $newSessionId . "_" . $result['id'];
-    session_id($sessionId);
 }
 else {
     header('Location: home.php');
