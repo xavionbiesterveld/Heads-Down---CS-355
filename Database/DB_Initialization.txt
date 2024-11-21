@@ -1,4 +1,4 @@
-CREATE DATABASE IF EXISTS heads_down;
+CREATE DATABASE IF NOT EXISTS heads_down;
 
 use heads_down
 
@@ -16,6 +16,7 @@ CREATE TABLE category_info(
     cat_name varchar(225) not null unique,
     is_custom boolean,
     made_by int,
+    word_list TEXT,
     PRIMARY KEY (cat_id),
     FOREIGN KEY (made_by) REFERENCES user_info(user_id)
 );
