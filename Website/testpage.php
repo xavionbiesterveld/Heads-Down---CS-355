@@ -13,30 +13,26 @@ require_once 'LoginPHP/config_session.php';
 </head>
 
 <body>
-<div class="form-box cat-creation">
-            <h2>Register</h2>
-            <form action="LoginPHP/signup.php" method='post'>
-                <div class="input-box">
-                    <input type="firstname" name='firstname' required> 
-                    <label>First Name</label>
-                </div>
-                <div class="input-box">
-                    <input type="lastname" name='lastname' required>
-                    <label>Last Name</label>
-                </div>
-                <div class="input-box">
-                    <input type="username" name='username' required>
-                    <label>Username</label>
-                </div>
-                <div class="input-box">
-                    <input type="password" name='password' required>
-                    <label>Password</label>
-                </div>
-                <button type="submit">Register</button>
-                <div class="login-register">
-                    <p>Have an account? <a href="#" class="login-link">Login Here</a></p>
-                </div>
-            </form>
+
+    <div class="wrapper active-popup">
+        <div class="form-box cat-creation">
+                <h2>Create Category</h2>
+                <form action="" method='post'>
+                    <div class="input-box">
+                        <input type="catname" name='catname' required> 
+                        <label>Category Name</label>
+                    </div>
+                    <div class="input-box-textarea">
+                        <textarea name='catwords' class='cat-textarea' required>
+                        </textarea>
+                        <label>Enter Comma Separated List of Words Here</label>
+                    </div>
+                    <input type="hidden" name="user_id" value="<?php //echo $_SESSION['user_id']; ?>">
+                    <button type="submit">Create Category</button>
+                </form>
+        </div>
+    </div>
+
 </body>
 
 </html>

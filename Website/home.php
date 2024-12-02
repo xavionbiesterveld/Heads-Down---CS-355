@@ -22,7 +22,6 @@ require_once 'LoginPHP/login_view.php';
             if (isset($_SESSION["user_id"])){ ?>
 
                 <form action="Loginphp/logout.php" method="post">
-                    <input type="hidden" name="some_data" value="value">
                     <button type="submit">Logout</button>
                 </form>
             

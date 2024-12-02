@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     error_log("This is a log message");
 
     try {
-        require_once 'dbh.php';
+        require_once '../dbh.php';
         require_once 'login_model.php';
         require_once 'login_contr.php';
 

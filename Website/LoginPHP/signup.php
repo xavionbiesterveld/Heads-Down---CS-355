@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     try {
-        require_once 'dbh.php';
+        require_once '../dbh.php';
         require_once 'signup_model.php';
         require_once 'signup_contr.php';
 
