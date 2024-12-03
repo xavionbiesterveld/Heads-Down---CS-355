@@ -17,14 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-const wrapper = document.querySelector('.wrapper')
-const loginLink = document.querySelector('.login-link')
-const registerLink = document.querySelector('.register-link')
+const wrapper = document.querySelector('.wrapper');
+const loginLink = document.querySelector('.login-link');
+const registerLink = document.querySelector('.register-link');
 const btnPopup = document.querySelector('.btnLogin-popup');
 const closeWindow = document.querySelector('.close-window');
+const btnPopupCat = document.querySelector('.btncategorycreation-popup');
 
 registerLink.addEventListener('click', () => {
     wrapper.classList.add('active');
+})
+
+btnPopupCat.addEventListener('click', () => {
+    wrapper.classList.add('active-popup');
 })
 
 loginLink.addEventListener('click', () => {

@@ -1,5 +1,6 @@
 <?php
 require_once 'LoginPHP/config_session.php';
+$_SESSION["user_id"] = 1;
 
 ?>
 
@@ -14,6 +15,8 @@ require_once 'LoginPHP/config_session.php';
 
 <body>
 
+    <button class="btncategorycreation-popup">Create Class</button>
+
     <div class="wrapper active-popup">
         <div class="form-box cat-creation">
                 <h2>Create Category</h2>
@@ -27,11 +30,13 @@ require_once 'LoginPHP/config_session.php';
                         </textarea>
                         <label>Enter Comma Separated List of Words Here</label>
                     </div>
-                    <input type="hidden" name="user_id" value="<?php //echo $_SESSION['user_id']; ?>">
+                    <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                     <button type="submit">Create Category</button>
                 </form>
         </div>
     </div>
+
+    <script src="script.js"></script>
 
 </body>
 
