@@ -1,6 +1,7 @@
 <?php
 require_once 'LoginPHP/config_session.php';
 require_once 'CategoryPHP/cat_create_view.php';
+require_once 'cat_load.php';
 $_SESSION["user_id"] = 1;
 
 ?>
@@ -41,6 +42,22 @@ $_SESSION["user_id"] = 1;
 
         
     </div>
+
+    <section>
+        <label for="category">Category:</label>
+        <select id="category">
+            <option value="animals">Animals</option>
+            <option value="movies">Movies</option>
+            <option value="history">History</option>
+            <?php
+                $names = load_category_names();
+
+                foreach ($names as $name) {
+                    echo "<option>" . htmlspecialchars($name) . "</option>\n";
+                }
+            ?>
+        </select>
+    </section>
 
     <?php
         check_cat_creation_errors();
