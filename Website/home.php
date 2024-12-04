@@ -49,7 +49,7 @@ require_once 'LoginPHP/login_view.php';
                 </div>
             </form>
             <?php
-                check_login_errors()
+                check_login_errors();
             ?>
         </div>
 

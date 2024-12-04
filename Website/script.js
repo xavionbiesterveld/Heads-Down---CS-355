@@ -17,29 +17,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-const wrapper = document.querySelector('.wrapper');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
-const btnPopup = document.querySelector('.btnLogin-popup');
-const closeWindow = document.querySelector('.close-window');
-const btnPopupCat = document.querySelector('.btncategorycreation-popup');
+const wrapper = document.querySelector('.wrapper')
+const loginLink = document.querySelector('.login-link')
+const registerLink = document.querySelector('.register-link')
+const btnPopup = document.querySelector('.btnLogin-popup')
+const closeWindow = document.querySelector('.close-window')
+const btnPopupCat = document.querySelector('.btncategorycreation-popup')
 
-registerLink.addEventListener('click', () => {
-    wrapper.classList.add('active');
-})
+if (registerLink) {
+    registerLink.addEventListener('click', () => {
+        wrapper.classList.add('active');
+    })
+}
 
-btnPopupCat.addEventListener('click', () => {
-    wrapper.classList.add('active-popup');
-})
+if (loginLink) {
+    loginLink.addEventListener('click', () => {
+        wrapper.classList.remove('active');
+    })
+}
 
-loginLink.addEventListener('click', () => {
-    wrapper.classList.remove('active');
-})
+if (btnPopup) {
+    btnPopup.addEventListener('click', () => {
+        wrapper.classList.add('active-popup');
+    })
+}
 
-btnPopup.addEventListener('click', () => {
-    wrapper.classList.add('active-popup');
-})
+if (closeWindow) {
+    closeWindow.addEventListener('click', () => {
+        wrapper.classList.remove('active-popup');
+    })
+}
 
-closeWindow.addEventListener('click', () => {
-    wrapper.classList.remove('active-popup');
-})
+if (btnPopupCat) {
+    btnPopupCat.addEventListener('click', () => {
+        wrapper.classList.add('active-popup');
+    })
+}

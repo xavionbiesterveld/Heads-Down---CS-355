@@ -1,5 +1,6 @@
 <?php
 require_once 'LoginPHP/config_session.php';
+require_once 'CategoryPHP/cat_create_view.php';
 $_SESSION["user_id"] = 1;
 
 ?>
@@ -17,10 +18,13 @@ $_SESSION["user_id"] = 1;
 
     <button class="btncategorycreation-popup">Create Class</button>
 
-    <div class="wrapper active-popup">
+    <div class="wrapper">
+        <span class="close-window" >
+            x
+        </span>
         <div class="form-box cat-creation">
                 <h2>Create Category</h2>
-                <form action="" method='post'>
+                <form action="CategoryPHP/cat_create.php" method='post'>
                     <div class="input-box">
                         <input type="catname" name='catname' required> 
                         <label>Category Name</label>
@@ -34,7 +38,13 @@ $_SESSION["user_id"] = 1;
                     <button type="submit">Create Category</button>
                 </form>
         </div>
+
+        
     </div>
+
+    <?php
+        check_cat_creation_errors();
+    ?>
 
     <script src="script.js"></script>
 

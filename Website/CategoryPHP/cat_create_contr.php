@@ -26,5 +26,5 @@ function is_catwords_valid(string $catwords) {
 }
 
 function create_cat(object $pdo, string $catname, string $catwords_nospaces, int $user_id) {
-    set_user($pdo, $catname, $catwords_nospaces);
+    set_cat($pdo, $catname, $catwords_nospaces, $user_id);
 }
