@@ -1,1 +1,71 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const startButton = document.getElementById('start-button');
+    const wordDisplay = document.getElementById('word-display');
+    const addPlayerButton = document.getElementById('add-player-button');
+    const playerList = document.getElementById('player-list');
 
+    const words = [
+        "Elephant",
+        "Pizza",
+        "Spaceship",
+        "Superman",
+        "Guitar",
+        "Sunflower"
+    ];
+
+    // Handle game start
+    startButton.addEventListener('click', () => {
+        const randomWord = words[Math.floor(Math.random() * words.length)];
+        wordDisplay.textContent = randomWord;
+    });
+
+    // Add new player
+    addPlayerButton.addEventListener('click', () => {
+        const playerName = prompt("Enter player's name:");
+        if (playerName) {
+            const playerDiv = document.createElement('div');
+            playerDiv.classList.add('player');
+            playerDiv.innerHTML = `
+                <img src="player-icon.png" alt="Player Icon">
+                <div class="player-name">${playerName}</div>
+                <div class="player-score" data-score="0">Score: 0</div>
+                <div class="player-buttons">
+                    <button class="increment-score">+1</button>
+                </div>
+            `;
+            playerList.appendChild(playerDiv);
+
+            // Increment score
+            playerDiv.querySelector('.increment-score').addEventListener('click', () => {
+                const scoreElement = playerDiv.querySelector('.player-score');
+                let score = parseInt(scoreElement.getAttribute('data-score'), 10);
+                score += 1;
+                scoreElement.setAttribute('data-score', score);
+                scoreElement.textContent = `Score: ${score}`;
+            });
+        }
+    });
+
+    // Popup and form functionality
+    const wrapper = document.querySelector('.wrapper');
+    const loginLink = document.querySelector('.login-link');
+    const registerLink = document.querySelector('.register-link');
+    const btnPopup = document.querySelector('.btnLogin-popup');
+    const closeWindow = document.querySelector('.close-window');
+
+    registerLink.addEventListener('click', () => {
+        wrapper.classList.add('active');
+    });
+
+    loginLink.addEventListener('click', () => {
+        wrapper.classList.remove('active');
+    });
+
+    btnPopup.addEventListener('click', () => {
+        wrapper.classList.add('active-popup');
+    });
+
+    closeWindow.addEventListener('click', () => {
+        wrapper.classList.remove('active-popup');
+    });
+});
