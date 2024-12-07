@@ -1,8 +1,8 @@
 <?php
-$servername = "your_servername";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database_name";
+$servername = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'heads_down';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -10,9 +10,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+
 }
 
-$sql = "SELECT user_id, score FROM leaderboard_info ORDER BY score DESC";
+$sql = "SELECT user_id, username, score FROM leaderboard_info ORDER BY score DESC";
 $result = $conn->query($sql);
 
 $players = array();

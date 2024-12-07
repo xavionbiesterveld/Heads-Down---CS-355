@@ -122,13 +122,14 @@
 
     <main>
         <section id="game-area">
-            <h2>Your score is</h2>
-            <div id="score-display">
-                
-            </div>
+            <div class="final-score">
+                <h2>Game Over</h2>
+                <p>Your final score is: <span id="finalScore"></span></p>
+                <button onclick="window.location.href='home.html'">Return to Home</button>
+              </div>
             <button id="playGame" onclick="window.location.href='play_game.html'">Restart</button>
             <button id="settingPage" onclick="window.location.href='setting_page.html'">Change setting</button>
-            <button id="leaderBoard" onclick="window.location.href='setting_page.html'">View Leader Board</button>
+            <button id="leaderBoard" onclick="window.location.href='setting_page.html'">View Leaderboard</button>
         </section>
     </main>
     
