@@ -44,6 +44,7 @@
         
         #game-area {
             margin: 20px 0;
+            width: 100%;
         }
         
         #word-display {
@@ -57,6 +58,13 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 50px;
+        }
+
+        #nextAndSkip {
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         h2 {
@@ -104,7 +112,11 @@
             <p>Press Start to see your word!</p>
         </div>
         <button id="settingPage" onclick="window.location.href='setting_page.html'">Go Back</button>
-        <button id="start-button">Start</button>
+        <button id="startButton">Start</button>
+        <div id="nextAndSkip" style="display: none">
+            <button id="skipButton">Skip</button>
+            <button id="nextButton">Next</button>
+        </div>
     </section>
 
     <footer>

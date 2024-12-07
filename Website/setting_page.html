@@ -119,11 +119,36 @@
 
     <section>
         <label for="category">Category:</label>
-        <select id="category">
-            <option value="animals">Animals</option>
-            <option value="movies">Movies</option>
-            <option value="history">History</option>
-        </select>
+        <div class="category-checkbox">
+                <?php
+                    $servername = 'localhost';
+                    $username = 'root';
+                    $password = '';
+                    $dbname = 'heads_down';
+
+                    // Create connection
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    // Check connection
+                    if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    $selectedCategories = $_POST['category'];
+                    
+                    $sql = "SELECT * FROM words WHERE cat_id IN (" . implode(',', $selectedCategories) . ")";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<input type="checkbox" name="category[]" value="'.$row["cat_id"].' ">';
+                            echo '<label>' .$row["cat_name"]. '</label>';
+                        }
+                    } else {
+                        echo "<td><h3>No Category</h3></td>";
+                    }
+                    $conn->close();
+                ?>
+        </div>
     </section>
 
     <section>

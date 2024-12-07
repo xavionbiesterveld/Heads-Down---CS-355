@@ -1,77 +1,126 @@
-// run 'npm install axios' or 'yarn add axios' in bash to install Axios
-import axios from 'axios';
 const startButton = document.getElementById('startButton');
-const gameContainer = document.getElementById('gameContainer');
+const gameContainer = document.getElementById('game-area');
+const wordDisplay = document.getElementById('word-display');
+const timerDisplay = document.createElement('div');
+
+// Timer-related variables
+let timeLeft = document.createElement('timeLimit');; // Seconds
+let timerInterval;
+
+// Word list
+const words = [
+    "Elephant",
+    "Pizza",
+    "Spaceship",
+    "Superman",
+    "Guitar",
+    "Sunflower"
+];
+
+// Add the timer display to the game area
+timerDisplay.id = "timer";
+timerDisplay.style.fontSize = "1.5rem";
+timerDisplay.style.fontWeight = "bold";
+timerDisplay.style.margin = "20px";
+gameContainer.appendChild(timerDisplay);
 
 startButton.addEventListener('click', () => {
+    // Hide the start button and prepare the game
     startButton.style.display = 'none';
-    gameContainer.style.display = 'block';
+    settingPage.style.display = 'none';
+    nextAndSkip.style.display = 'flex';
 
-    // Add your game logic here
-});
-
-//Start of nate code
-document.addEventListener('DOMContentLoaded', () => {
-    const startButton = document.getElementById('start-button');
-    const wordDisplay = document.getElementById('word-display');
-
-    const words = [
-        "Elephant",
-        "Pizza",
-        "Spaceship",
-        "Superman",
-        "Guitar",
-        "Sunflower"
-    ];
-
-    startButton.addEventListener('click', () => {
-        const randomWord = words[Math.floor(Math.random() * words.length)];
-        wordDisplay.textContent = randomWord;
+    //category-selection
+    const selectedCategories = [];
+    const categoryCheckboxes = document.querySelectorAll('.category-checkbox input[type="checkbox"]:checked');
+    categoryCheckboxes.forEach(checkbox => {
+        selectedCategories.push(checkbox.value);
     });
+
+    // Display a random word
+    
+    const randomWord = words[Math.floor(Math.random() * words.length)];
+    wordDisplay.textContent = randomWord;
+    
+
+    // Start the timer
+    startTimer();
 });
 
-const numPlayersInput = document.getElementById('numPlayers');
-const timeLimitInput = document.getElementById('timeLimit');
-const categorySelect = document.getElementById('category');
-const startGameButton = document.getElementById('startGame');
-
-startGameButton.addEventListener('click', () => {
-    const numPlayers = parseInt(numPlayersInput.value);
-    const timeLimit = parseInt(timeLimitInput.value);
-    const category = categorySelect.value;
-
-    // Send the selected settings to the game logic or server
-    console.log(`Number of Players: ${numPlayers}`);
-    console.log(`Time Limit: ${timeLimit} seconds`);
-    console.log(`Category: ${category}`);
-
-    // You might want to redirect to the game screen or trigger other actions here
-    // For example, you could use JavaScript's window.location.href to redirect.
-});
+// Function to start the timer
+function startTimer() {
+    timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timerDisplay.textContent = "Time's up!";
+        } else {
+            timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+            timeLeft--;
+        }
+    }, 1000); // 1000ms = 1 second
+}
 
 //Leader Board
-function showLeaderBoard() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-  }
-axios.get('fetch_leaderboard.php')
-.then(response => {
-    const players = response.data; // Assuming the PHP script returns an array of player objects
+const showLeaderboardButton = document.getElementById('showLeaderboard');
+const leaderboardPopup = document.getElementById('leaderboardPopup');
+const leaderboardBody = document.getElementById('leaderboardBody');
+const closeLeaderboardButton = document.getElementById('closeLeaderboard');
 
-    // Now you have an array of players, each with 'user_id' and 'score' properties
-    console.log(players);
+showLeaderboardButton.addEventListener('click', () => {
+  // Fetch leaderboard data from your server-side script
+  fetch('fetch_leaderboard.php')
+    .then(response => response.json())
+    .then(data => {
+      // Sort players by score in descending order
+      data.sort((a, b) => b.score - a.score);
 
-    // Use the 'players' array to populate your leaderboard display
-    const leaderboardContainer = document.getElementById('leaderboard');
-    players.forEach(player => {
-        const leaderboardRow = document.createElement('tr');
-        leaderboardRow.innerHTML = `
-        <td>${player.user_id}</td>
-        <td>${player.score}</td>
+      // Add rank to each player
+      data.forEach((player, index) => {
+        player.rank = index + 1;
+      });
+
+      // Populate the leaderboard table
+      data.forEach(player => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${player.rank}</td>
+          <td>${player.username}</td>
+          <td>${player.score}</td>
         `;
-        leaderboardContainer.appendChild(leaderboardRow);
+        leaderboardBody.appendChild(row);
+      });
+
+      // Show the leaderboard popup
+      leaderboardPopup.style.display = 'block';
+    })
+    .catch(error => {
+      console.error('Error fetching leaderboard data:', error);
+      // Handle errors, e.g., display an error message
     });
-})
-.catch(error => {
-    console.error('Error fetching leaderboard data:', error);
 });
+
+closeLeaderboardButton.addEventListener('click', () => {
+  leaderboardPopup.style.display = 'none';
+});
+
+const wrapper = document.querySelector('.wrapper')
+const loginLink = document.querySelector('.login-link')
+const registerLink = document.querySelector('.register-link')
+const btnPopup = document.querySelector('.btnLogin-popup');
+const closeWindow = document.querySelector('.close-window');
+
+registerLink.addEventListener('click', () => {
+    wrapper.classList.add('active');
+})
+
+loginLink.addEventListener('click', () => {
+    wrapper.classList.remove('active');
+})
+
+btnPopup.addEventListener('click', () => {
+    wrapper.classList.add('active-popup');
+})
+
+closeWindow.addEventListener('click', () => {
+    wrapper.classList.remove('active-popup');
+})
