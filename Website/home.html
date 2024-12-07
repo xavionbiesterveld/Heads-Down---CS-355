@@ -165,14 +165,38 @@
                 HAVE FUN!!
             </p>
         </section>
-        <button id="leaderBoard">View Leader Board</button>
-        <div class="popup" onclick="showLeaderBoard()">
-            <span class="popuptext" id="myPopup">
-                <h2>Leader Board</h2>
-                <p>You can customize this content as needed.</p>
-            <button id="close-popup">Close</button>
-            </span>
+        
+        <div class="container">
+            <button id="showLeaderboard">Show Leaderboard</button>
+          
+            <div id="leaderboardPopup" style="display: none;">
+              <h2>World Leaderboard</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboardBody"></tbody>
+              </table>
+
+              <h2>Personal Leaderboard</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboardBody"></tbody>
+              </table>
+              <button id="closeLeaderboard">Close</button>
+            </div>
         </div>
+
         <button id="settingPage" onclick="window.location.href='setting_page.html'">Next Page</button>
     </main>
     <footer>
