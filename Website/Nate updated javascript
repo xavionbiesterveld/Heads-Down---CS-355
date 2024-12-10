@@ -1,11 +1,18 @@
 const startButton = document.getElementById('startButton');
-const gameContainer = document.getElementById('game-area');
+const settingPage = document.getElementById('settingPage');
+const nextAndSkip = document.getElementById('nextAndSkip');
 const wordDisplay = document.getElementById('word-display');
+const nextButton = document.getElementById('nextButton');
+const skipButton = document.getElementById('skipButton');
 const timerDisplay = document.createElement('div');
 
 // Timer-related variables
 let timeLeft = 60; // Seconds
 let timerInterval;
+
+// Score variables
+let currentScore = 0;
+let currentPlayersScore = 0;
 
 // Word list
 const words = [
@@ -22,20 +29,30 @@ timerDisplay.id = "timer";
 timerDisplay.style.fontSize = "1.5rem";
 timerDisplay.style.fontWeight = "bold";
 timerDisplay.style.margin = "20px";
-gameContainer.appendChild(timerDisplay);
+document.getElementById('game-area').appendChild(timerDisplay);
 
 startButton.addEventListener('click', () => {
     // Hide the start button and prepare the game
     startButton.style.display = 'none';
+    settingPage.style.display = 'none';
+    nextAndSkip.style.display = 'flex';
 
     // Display a random word
-    
-    const randomWord = words[Math.floor(Math.random() * words.length)];
-    wordDisplay.textContent = randomWord;
-    
+    wordDisplay.textContent = getRandomWord();
 
     // Start the timer
     startTimer();
+});
+
+nextButton.addEventListener('click', () => {
+    // Increment score and display a new word
+    currentScore++;
+    wordDisplay.textContent = getRandomWord();
+});
+
+skipButton.addEventListener('click', () => {
+    // Display a new word without incrementing the score
+    wordDisplay.textContent = getRandomWord();
 });
 
 // Function to start the timer
@@ -44,10 +61,25 @@ function startTimer() {
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             timerDisplay.textContent = "Time's up!";
+            endGame();
         } else {
             timerDisplay.textContent = `Time Left: ${timeLeft}s`;
             timeLeft--;
         }
     }, 1000); // 1000ms = 1 second
+}
+
+// Function to get a random word
+function getRandomWord() {
+    return words[Math.floor(Math.random() * words.length)];
+}
+
+// Function to end the game
+function endGame() {
+    currentPlayersScore = currentScore;
+    alert(`Good Job! This team's current score is ${currentScore}`);
+    currentScore = 0; // Reset score for the next team
+    nextAndSkip.style.display = 'none';
+    startButton.style.display = 'block';
 }
 
