@@ -1,11 +1,18 @@
 const startButton = document.getElementById('startButton');
-const gameContainer = document.getElementById('game-area');
-const wordDisplay = document.getElementById('word-display');
-const timerDisplay = document.createElement('div');
+const gameContainer = document.getElementById('gameContainer');
 
-// Timer-related variables
-let timeLeft = 60; // Seconds
-let timerInterval;
+startButton.addEventListener('click', () => {
+    startButton.style.display = 'none';
+    gameContainer.style.display = 'block';
+
+    // Add your game logic here
+});
+
+//Start of nate code
+>>>>>>>>> Temporary merge branch 2
+document.addEventListener('DOMContentLoaded', () => {
+    const startButton = document.getElementById('start-button');
+    const wordDisplay = document.getElementById('word-display');
 
 // Word list
 const words = [
