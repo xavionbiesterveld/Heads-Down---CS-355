@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 function get_cat_names(object $pdo){
-    $query = "SELECT cat_name FROM category_info";
+    $query = "SELECT cat_id, cat_name FROM category_info";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
 
-    $result = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
 

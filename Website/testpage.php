@@ -53,7 +53,8 @@ $_SESSION["user_id"] = 1;
                 $names = load_category_names();
 
                 foreach ($names as $name) {
-                    echo "<option>" . htmlspecialchars($name) . "</option>\n";
+                    echo '<input type="checkbox" name="category[]" value="'.htmlspecialchars($name['cat_id']).' ">';
+                    echo '<label>' .htmlspecialchars($name['cat_name']). '</label>';
                 }
             ?>
         </select>
