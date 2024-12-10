@@ -1,3 +1,7 @@
+<?php
+    require_once 'fetch_leaderboard.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,11 +177,18 @@
               <h2>Leaderboard</h2>
               <table>
                 <thead>
-                  <tr>
-                    <th>Rank</th>
-                    <th>Username</th>
-                    <th>Score</th>
-                  </tr>
+                    <?php
+                        lb_alltime = load_leaderboard_alltime()
+
+                        for ($i = 0; $i < 5; $i++){
+                            echo '<tr>';
+                            echo '<th>' . htmlspecialchars($i + 1) . '</th>';
+                            echo '<th>' . htmlspecialchars($lb_alltime['username']) . '</th>';
+                            echo '<th>' . htmlspecialchars($lb_alltime['score']) . '</th>';
+                            echo '<th>' . htmlspecialchars($lb_alltime['category']) . '</th>';
+                            echo '</tr>'
+                        }
+                    ?>
                 </thead>
                 <tbody id="leaderboardBody"></tbody>
               </table>

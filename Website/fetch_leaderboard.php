@@ -1,30 +1,46 @@
 <?php
-$servername = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'heads_down';
+function load_leaderboard_alltime(){
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+    try {
+        require_once 'dbh.php';
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
 
-}
+        $query = "SELECT user_id, username, score, category FROM leaderboard_info ORDER BY score DESC";
+        #need joined query work on later.
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
 
-$sql = "SELECT user_id, username, score FROM leaderboard_info ORDER BY score DESC";
-$result = $conn->query($sql);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$players = array();
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $players[] = $row;
+        $pdo = null;
+        $stmt = null;
+
+        return $result;
+    }
+    catch (PDOException $e) {
+        die('Query failed: '. $e->getMessage())
     }
 }
 
-header('Content-Type: application/json');
-echo json_encode($players);
+function load_leaderboard_personal(int $user_id){
 
-$conn->close();
-?>
+    try {
+        require_once 'dbh.php';
+
+
+        $query = "SELECT username, score, category FROM leaderboard_info ORDER BY score DESC WHERE user_id = :user_id;";
+        $stmt->bindParam(":user_id", $user_id);
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $pdo = null;
+        $stmt = null;
+
+        return $result;
+    }
+    catch (PDOException $e) {
+        die('Query failed: '. $e->getMessage())
+    }
+}
