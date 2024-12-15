@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heads Down Homepage</title>
+    <link rel="stylesheet" href="headsdown.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-image: url(./images/blue-bg.jpg);
+            background-color: #84a2d4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 20px 0;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        #game-instructions {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: medium;
+            text-align: justify;
+            margin-right: 25vw;
+            margin-left: 25vw;
+        }
+        
+        #game-area {
+            margin: 20px 0;
+        }
+        
+        #word-display {
+            background-color: #e6f7ff;
+            border: 2px solid #0073e6;
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index:   
+         9999;
+        }
+        
+        .popup:target {
+            display: block;
+        }
+        
+        footer {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 0;
+            position: relative;
+            margin-bottom: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Heads Down</h1>
+        <p>The Ultimate Guessing Game</p>
+    </header>
+    <main>
+        <section id="game-instructions">
+            <h2>How to Play</h2>
+            <p>
+                Hold the phone or card up to your forehead. Your teammates will give you clues to guess the word before time runs out!
+                <br>
+                Rules
+                <ul>
+                    <li>No Direct Answers</li>
+                    <li>No Foreign Language</li>
+                    <li>The game ends when timer runs out</li>
+                </ul>
+                The player with the highest score at the end of the game wins.
+                <br>
+                HAVE FUN!!
+            </p>
+        </section>
+        <button id="leaderBoard">View Leader Board</button>
+        <div id="popup" class="popup">
+            <h2>Leader Board</h2>
+            <p>You can customize this content as needed.</p>
+            <button id="close-popup">Close</button>
+        </div>
+        <button id="settingPage" onclick="window.location.href='setting_page.html'">Next Page</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Heads Down</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
