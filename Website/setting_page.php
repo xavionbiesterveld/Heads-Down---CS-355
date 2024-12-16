@@ -1,7 +1,5 @@
 <?php
     require_once 'LoginPHP/config_session.php';
-    require_once 'LoginPHP/signup_view.php';
-    require_once 'LoginPHP/login_view.php';
     require_once 'cat_load.php';
     require_once 'CategoryPHP/cat_create_view.php';
 ?>
@@ -132,9 +130,11 @@
                             <button type="submit">Create Category</button>
                         </form>
                 </div>
-            </div>
-            <?php check_login_errors() ?>
+            </div>        
     </header>
+        
+    <?php check_cat_creation_errors() ?>
+    
     <h1>Heads Down Settings</h1>
 
     <section>
