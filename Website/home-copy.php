@@ -413,10 +413,8 @@
             </div>
         </div>
 
-        <button id="settingPage" onclick="window.location.href='setting_page.html'">Next Page</button>
+        <button id="settingPage" onclick="window.location.href='setting_page.php'">Next Page</button>
         </div>
-
-        <button id="settingPage" onclick="window.location.href='setting_page.html'">Next Page</button>
     </main>
     <footer>
         <p>&copy; 2024 Heads Down</p>

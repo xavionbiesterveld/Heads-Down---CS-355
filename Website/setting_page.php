@@ -1,3 +1,10 @@
+<?php
+    require_once 'LoginPHP/config_session.php';
+    require_once 'LoginPHP/signup_view.php';
+    require_once 'LoginPHP/login_view.php';
+    require_once 'cat_load.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
