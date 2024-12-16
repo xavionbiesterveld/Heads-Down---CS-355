@@ -31,8 +31,7 @@ $_SESSION["user_id"] = 1;
                         <label>Category Name</label>
                     </div>
                     <div class="input-box-textarea">
-                        <textarea name='catwords' class='cat-textarea' required>
-                        </textarea>
+                        <textarea name='catwords' class='cat-textarea' required></textarea>
                         <label>Enter Comma Separated List of Words Here</label>
                     </div>
                     <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
