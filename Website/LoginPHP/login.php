@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     error_log("This is a log message");
 
     try {
-        require_once 'dbh.php';
+        require_once '../dbh.php';
         require_once 'login_model.php';
         require_once 'login_contr.php';
 
@@ -41,15 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         require_once 'config_session.php';
 
         if ($errors) {
-            $_SESSION['errors_signup'] = $errors;
+            $_SESSION['errors_login'] = $errors;
             header("Location: ../home.php");
             die();
         }
-    
-        $newSessionId = session_create_id();
-        $sessionId = $newSessionId . "_" . $result['id'];
-        session_id($sessionId);
-    
+
         $_SESSION["user_id"] = $result["user_id"];
         $_SESSION["username"] = htmlspecialchars($result["username"]);
     

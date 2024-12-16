@@ -11,6 +11,7 @@ CREATE TABLE user_info (
     is_admin boolean,
     PRIMARY KEY (user_id)
 );
+
 CREATE TABLE category_info(
     cat_id int auto_increment,
     cat_name varchar(225) not null unique,

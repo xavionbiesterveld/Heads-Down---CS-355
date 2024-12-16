@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heads Down Score</title>
+    <link rel="stylesheet" href="headsdown.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-image: url(./images/blue-bg.jpg);
+            background-color: #84a2d4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 20px 0;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        #game-instructions {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: medium;
+            text-align: justify;
+            margin-right: 25vw;
+            margin-left: 25vw;
+        }
+        
+        #game-area {
+            margin: 20px 0;
+        }
+        
+        #word-display {
+            background-color: #e6f7ff;
+            border: 2px solid #0073e6;
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            padding: 10px;
+            font-size: larger;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index:   
+         9999;
+        }
+        
+        .popup:target {
+            display: block;
+        }
+        
+        footer {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 0;
+            position: relative;
+            margin-bottom: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Heads Down</h1>
+        <p>The Ultimate Guessing Game</p>
+    </header>
+
+    <main>
+        <section id="game-area">
+            <div class="final-score">
+                <h2>Game Over</h2>
+                <p>Your final score is: <span id="finalScore"></span></p>
+                <button onclick="window.location.href='home.html'">Return to Home</button>
+              </div>
+            <button id="playGame" onclick="window.location.href='play_game.html'">Restart</button>
+            <button id="settingPage" onclick="window.location.href='setting_page.html'">Change setting</button>
+            <button id="leaderBoard" onclick="window.location.href='setting_page.html'">View Leaderboard</button>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Heads Down</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
