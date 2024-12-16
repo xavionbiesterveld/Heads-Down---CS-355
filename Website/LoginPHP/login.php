@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($errors) {
             $_SESSION['errors_login'] = $errors;
-            header("Location: ../home-copy.php");
+            header("Location: ../home.php");
             die();
         }
 
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         $_SESSION['last_regeneration'] = time();
     
-        header('Location: ../home-copy.php?login=success');
+        header('Location: ../home.php?login=success');
     
         $pdo = null;
         $stmt = null;

@@ -25,14 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($errors) {
             $_SESSION['errors_signup'] = $errors;
-            header("Location: ../home-copy.php");
+            header("Location: ../home.php");
             die();
         }
 
         create_user($pdo, $firstname, $lastname, $username, $password);
 
       
-        header('Location: ../home-copy.php?signup=success');
+        header('Location: ../home.php?signup=success');
 
         $pdo = null;
         $stmt = null;
