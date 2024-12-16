@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             die();
         }
 
-        $catwords_nospaces = str_replace(' ', '', $catwords);
+        $catwords_nospaces = preg_replace('/, */', ',', $catwords);
 
         error_log("Before Cat Create Function");
 
