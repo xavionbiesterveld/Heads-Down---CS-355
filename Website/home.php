@@ -105,6 +105,6 @@ require_once 'LoginPHP/login_view.php';
     <footer>
         <p>&copy; 2024 Heads Up!</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="script-login.js"></script>
 </body>
 </html>

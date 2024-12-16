@@ -42,20 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($errors) {
             $_SESSION['errors_signup'] = $errors;
-            header("Location: ../home.php");
+            header("Location: ../home-copy.php");
             die();
         }
-    
-        $newSessionId = session_create_id();
-        $sessionId = $newSessionId . "_" . $result['id'];
-        session_id($sessionId);
-    
+
         $_SESSION["user_id"] = $result["user_id"];
         $_SESSION["username"] = htmlspecialchars($result["username"]);
     
         $_SESSION['last_regeneration'] = time();
     
-        header('Location: ../home.php?login=success');
+        header('Location: ../home-copy.php?login=success');
     
         $pdo = null;
         $stmt = null;
