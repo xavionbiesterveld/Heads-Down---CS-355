@@ -21,7 +21,7 @@ function does_cat_exist(object $pdo, string $catname) {
 }
 
 function is_catwords_valid(string $catwords) {
-    $pattern = '/^[a-zA-Z ,]*$/';
+    $pattern = '/^[a-zA-Z0-9 ,:\'\"-]*$/';
     return (bool)preg_match($pattern, $catwords);
 }
 
