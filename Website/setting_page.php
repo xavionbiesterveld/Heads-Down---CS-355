@@ -167,7 +167,7 @@
     </section>
 
     <section>
-        <button id="home" onclick="window.location.href='home.html'">Go Back</button>
+        <button id="home" onclick="window.location.href='home.php'">Go Back</button>
         <button id="startGame" onclick="window.location.href='play_game.html'">Start Game</button>
     </section>
 
