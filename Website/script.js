@@ -7,7 +7,7 @@ const skipButton = document.getElementById('skipButton');
 const timerDisplay = document.createElement('div');
 
 // Timer-related variables
-let timeLeft = 25; // Seconds
+let timeLeft = 60; // Seconds
 let timerInterval;
 
 // Score variables
@@ -72,49 +72,45 @@ function startTimer() {
     }, 1000); // 1000ms = 1 second
 }
 
-// Function to get a random word
-function getRandomWord() {
-    return words[Math.floor(Math.random() * words.length)];
-}
+//Leader Board
+const showLeaderboardButton = document.getElementById('showLeaderboard');
+const leaderboardPopup = document.getElementById('leaderboardPopup');
+const leaderboardBody = document.getElementById('leaderboardBody');
+const closeLeaderboardButton = document.getElementById('closeLeaderboard');
 
-function nextTeam() {
-    clearInterval(timerInterval);
+showLeaderboardButton.addEventListener('click', () => {
+  // Fetch leaderboard data from your server-side script
+  fetch('fetch_leaderboard.php')
+    .then(response => response.json())
+    .then(data => {
+      // Sort players by score in descending order
+      data.sort((a, b) => b.score - a.score);
 
-    if (currentTeam === 1) {
-        teamOneScore = currentScore;
-        currentTeam = 2;
-        alert(`Team 1 scored: ${teamOneScore}. Team 2, get ready!`);
-    } else {
-        teamTwoScore = currentScore;
-        alert(`Team 2 scored: ${teamTwoScore}`);
-        endGame();
-        return;
-    }
+      // Add rank to each player
+      data.forEach((player, index) => {
+        player.rank = index + 1;
+      });
 
-    // Reset for the next team
-    currentScore = 0;
-    wordDisplay.textContent = "Press Start to see your word!";
-    startButton.style.display = 'block';
-    nextAndSkip.style.display = 'none';
-}
+      // Populate the leaderboard table
+      data.forEach(player => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${player.rank}</td>
+          <td>${player.username}</td>
+          <td>${player.score}</td>
+        `;
+        leaderboardBody.appendChild(row);
+      });
 
-// Function to end the game
-function endGame() {
-    if (teamOneScore > teamTwoScore) {
-        alert("The winner is Team 1!");
-    } else if (teamOneScore < teamTwoScore) {
-        alert("The winner is Team 2!");
-    } else {
-        alert("It's a tie!");
-    }
+      // Show the leaderboard popup
+      leaderboardPopup.style.display = 'block';
+    })
+    .catch(error => {
+      console.error('Error fetching leaderboard data:', error);
+      // Handle errors, e.g., display an error message
+    });
+});
 
-    // Reset the game for replay
-    currentScore = 0;
-    teamOneScore = 0;
-    teamTwoScore = 0;
-    currentTeam = 1;
-
-    wordDisplay.textContent = "Press Start to see your word!";
-    startButton.style.display = 'block';
-    nextAndSkip.style.display = 'none';
-}
+closeLeaderboardButton.addEventListener('click', () => {
+  leaderboardPopup.style.display = 'none';
+});
