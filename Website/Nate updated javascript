@@ -7,7 +7,7 @@ const skipButton = document.getElementById('skipButton');
 const timerDisplay = document.createElement('div');
 
 // Timer-related variables
-let timeLeft = 60; // Seconds
+let timeLeft = 25; // Seconds
 let timerInterval;
 
 // Score variables
