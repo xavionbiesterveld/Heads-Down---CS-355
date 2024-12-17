@@ -392,7 +392,7 @@
                 </tbody>
               </table>
           
-            <div id="leaderboardPopup" style="display: absolute;">
+            <div id="leaderboardPopup" style="display: none;">
               <h2>Leaderboard</h2>
               <table>
                 <thead>

@@ -75,36 +75,13 @@ const closeLeaderboardButton = document.getElementById('closeLeaderboard');
 
 showLeaderboardButton.addEventListener('click', () => {
   // Fetch leaderboard data from your server-side script
-  fetch('fetch_leaderboard.php')
-    .then(response => response.json())
-    .then(data => {
-      // Sort players by score in descending order
-      data.sort((a, b) => b.score - a.score);
-
-      // Add rank to each player
-      data.forEach((player, index) => {
-        player.rank = index + 1;
-      });
-
-      // Populate the leaderboard table
-      data.forEach(player => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${player.rank}</td>
-          <td>${player.username}</td>
-          <td>${player.score}</td>
-        `;
-        leaderboardBody.appendChild(row);
-      });
-
       // Show the leaderboard popup
-      leaderboardPopup.style.display = 'block';
+      leaderboardPopup.style.display = 'flex';
     })
     .catch(error => {
       console.error('Error fetching leaderboard data:', error);
       // Handle errors, e.g., display an error message
-    });
-});
+    });;
 
 closeLeaderboardButton.addEventListener('click', () => {
   leaderboardPopup.style.display = 'none';
